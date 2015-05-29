@@ -1,18 +1,15 @@
 package understand_portfolio;
 
-
-import java.io.*;
-import org.json.simple.*;
 import org.quickconnectfamily.json.*;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
 import java.util.HashMap;
 
-import org.quickconnectfamily.json.JSONException;
-import org.quickconnectfamily.json.JSONInputStream;
-import org.quickconnectfamily.json.JSONOutputStream;
-import org.quickconnectfamily.json.JSONUtilities;
+
+
+import org.json.simple.JSONObject;
 
 public class json_understand_one {
 /**************
@@ -21,24 +18,26 @@ public class json_understand_one {
  * it is not meant to be amazing but demonstrate a basic understanding of QCJSON and JSON.simple
 **************/
 	
-	/*****************
-	 *  I created this object internally because I wanted to 
-	 * 	use it for testing but did not feel justified in making it 
-	 * its own class
-	 *****************/
+
 	class do_nothing_obj implements Serializable
 	{
+/*************************************************************
+ *  I created this object internally because I wanted to 
+ * 	use it for testing but did not feel justified in making it 
+ *  its own class
+ *************************************************************/	
 		public String name, college;public int age;public boolean is_graduated;
 		
-	public do_nothing_obj(String name, String coll, int age, boolean grad){
-		this.name = name;
-		this.college = coll;
-		this.age = age;
-		this.is_graduated = grad;
-			
-	}
+		public do_nothing_obj(String name, String coll, int age, boolean grad){
+			this.name = name;
+			this.college = coll;
+			this.age = age;
+			this.is_graduated = grad;
+				
+		}
 	
 	public do_nothing_obj(HashMap aMapRepresentation){
+	// constructor to handle a hashmap
 	// the object I am returning appears to need to have a contructor that deals with hashmaps
 		this.name = (String)aMapRepresentation.get("name");
 
@@ -46,35 +45,39 @@ public class json_understand_one {
 		//numbers are stored as longs or doubles.
 		Long asLong = (Long)aMapRepresentation.get("age");
 		this.age = asLong.intValue();
-		
 		if((Boolean)aMapRepresentation.get("is_graduated")){
 			this.is_graduated = true;
 		}
 		else{
 			this.is_graduated = false;
 		}
-		
-		
 	}
 	
 	
-	// do nothing method to check stuff later
+/**************************
+ *  create a string that I 
+ *  will use to compare strings 
+ *  later
+ **************************/
 		public void to_String(){
 			System.out.print(this.name + " attended " + college + " when they were " + age + " old\n");
 		 	if(!is_graduated){
 		 		System.out.println("And they are STILL in attendance");
 			 }
 		}
-		
-		
-		
 	}
 
-	
-	
 	public void my_JSON_simple_example_1(){
-	// this is an example of me using JSON.simple to create a very simple object 
-	// there is no importing or converting as of yet, I just wanted to be able to create one correctly		
+/***************************************	
+* this is an example of me using 
+* JSON.simple to create a very simple object 
+* there is no importing or converting as of 
+* yet, I just wanted to be able to create 
+* one correctly
+* plus JSon.simple is not part of the scope 
+* of this class, this is for my understanding 
+* specifically.
+*****************************************/
 /* DECLARE LOCAL VARIABLES     */	
 		String[] obj_name_KV = {"Obj_Name","James T Fallon"};	
 
@@ -96,9 +99,17 @@ public class json_understand_one {
 	// display the serialized object
 		System.out.print(test_obj);
 	}
-	
-	public void online_example_json_simple(){
 		
+	public void online_example_json_simple(){
+/*
+ * ************************************************************
+ * online_example_json_simple 
+ * this is a block of code I found online 
+ * that helped me to understand how to create a Json object. 
+ * while we are not using Json.simple in this class
+ * I still found it helpful to learn 	
+ **************************************************************
+ */
 		//import org.json.simple.JSONObject;
 		  JSONObject obj=new JSONObject();
 		  obj.put("name","foo");
@@ -110,18 +121,22 @@ public class json_understand_one {
 	}
 	
 	public void qcJson_Example_Simple_1(String filename) throws IOException{	
-/******************************************
+/***********************************************************
  * this method will show how to output a json object as 
  * a string to a file stream. my second step will be to use
- * a socket of some kind for the output.
- * ****************************************/
+ * a socket of some kind for the output. this will be done
+ * in a later method
+ * *********************************************************/
 
 		
-		// instantiate the input and output streams for use
+	// instantiate the input and output streams for use
 		FileOutputStream fout = new FileOutputStream(filename);
 		FileInputStream fin = new FileInputStream(filename);
 		
-	// use the previous output/input stream to create my Json output/input stream
+	// use the previous output/input stream to create my Json output/input objects
+	// these objects take a serializable object and convert it to bits, or something
+	// and then send them to the destination OR convert bits into a hashmap to use to
+	// create an object 
 	// its weird but I follow the examples :)
 		JSONOutputStream jsonOut = new JSONOutputStream(fout);	
 		JSONInputStream jsonIn = new JSONInputStream(fin);
@@ -167,13 +182,12 @@ public class json_understand_one {
 		
 	}
 	
-	
-
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+/*generic main method that I will change the code in to demonstrate different types of 
+ * coding stuff
+ */
 		
-		
-	//create a filename to pass into a JSON string
+		//create a filename to pass into a JSON string
 		String dir = "C:\\Users\\matthew\\workspace\\understand_portfolio\\src\\understand_portfolio";
 		String filename = dir + "\\testFile.txt";
 		
@@ -183,7 +197,7 @@ public class json_understand_one {
 		try {
 			obj.qcJson_Example_Simple_1(filename);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			System.out.println("the file: " + filename + " Does not exist in this location");
 			e.printStackTrace();
 		}
 		
