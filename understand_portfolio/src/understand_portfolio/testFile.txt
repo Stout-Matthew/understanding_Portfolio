@@ -1,0 +1,1 @@
+{"name":"Nick Krupa","college":"BYU-I","age":28,"is_graduated":false}
