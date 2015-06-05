@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+  
+ <hibernate-mapping>  
+  <class name="understand_portfolio.Food_item" table="food_item">  
+    <id name="id">  
+  		<generator class="native"></generator>  
+ 	</id>      
+    <property name="food_name"></property>  
+    <property name="category"></property>
+    <property name="calories"></property>  
+    <property name="date_eaten"></property>    
+            
+  </class>  
+  
+            
+ </hibernate-mapping>  
