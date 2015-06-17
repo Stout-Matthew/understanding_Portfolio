@@ -1,14 +1,8 @@
 package understand_portfolio;
 
 import org.quickconnectfamily.json.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.HashMap;
-
-
-
 import org.json.simple.JSONObject;
 
 public class json_understand_one {

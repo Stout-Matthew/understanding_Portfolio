@@ -8,7 +8,7 @@
     <id name="id">  
   		<generator class="native"></generator>  
  	</id>      
-    <property name="food_name"></property>  
+    <property name="foodName"></property>  
     <property name="category"></property>
     <property name="calories"></property>  
     <property name="date_eaten"></property>    
