@@ -4,11 +4,9 @@ package socketAndJsonTransmit;
 import java.io.IOException;
 import java.net.*;
 import java.util.HashMap;
-
 import org.quickconnectfamily.json.JSONException;
 import org.quickconnectfamily.json.JSONInputStream;
 import org.quickconnectfamily.json.JSONOutputStream;
-
 import exceptions.*;
 import understand_portfolio.Food_item;
 import my_socket_io.*;
@@ -55,6 +53,8 @@ public class SocketTestServer  {
 			
 			// the location from which data will be coming and accepted
 			this.clientSocket = serverSocket.accept();
+			
+			
 			System.out.println("Server set up to listen on port " + portNumber);
 			 
 		}	        

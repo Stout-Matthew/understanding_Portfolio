@@ -25,7 +25,7 @@ public class calorie_counter_program {
 	private JTextField txtCategory;
 	private JLabel lblFoodDatabase;
 	private JTextArea display_food;
-	private Hibernate_food_interface hbInt;
+	private HibFoodInterface hbInt;
 	
 	
 
@@ -96,7 +96,7 @@ public class calorie_counter_program {
 		frame.getContentPane().add(btnSubmit, "cell 1 9 2 1");
 		
 //JTextField calories, JTextField category, JTextField food_name, JButton submit
-		Hibernate_food_interface hbInt = new Hibernate_food_interface(txtCalories,txtCategory, txtfood_name,display_food, btnSubmit );	
+		HibFoodInterface hbInt = new HibFoodInterface(txtCalories,txtCategory, txtfood_name,display_food, btnSubmit );	
 		
 		
 	}
