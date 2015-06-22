@@ -37,8 +37,8 @@ public class ThreadController extends Thread {
 		this.serverView = serverView;
 		// establish which run instance we will perform
 		this.whichCase = 1;
-		
 	}
+	
 	public ThreadController(Socket cSocket){
 		this.cSocket = cSocket;
 		this.whichCase = 2;
@@ -97,8 +97,6 @@ public class ThreadController extends Thread {
 			e.printStackTrace();
 		}	   
 	}
-	
-	
 	
 	public boolean setUser(){
 		// attempt to put the input string into a user object
@@ -163,11 +161,7 @@ public class ThreadController extends Thread {
 					}else{
 						this.addToPane();
 					}
-					
-					
-					
 					this.cSocket.close();
-					
 				    break;
 				
 				case 2:
